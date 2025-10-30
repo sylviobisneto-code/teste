@@ -1,0 +1,30 @@
+nome: Integração Contínua com Minunit
+
+sobre:
+  empurrar:
+    galhos:
+      - principal
+  solicitação de pull:
+    galhos:
+      - principal
+
+empregos:
+  construir:
+    executa em: ubuntu-latest
+
+    passos:
+      # Fazer o checkout do código
+      - nome: Código de checkout
+        usos: ações/checkout@v2
+
+      # Preparando o ambiente para rodar aplicações em C
+      - nome: Instalar itens essenciais de compilação
+        Execute: sudo apt-get install build-essential
+
+      # Compilar o projeto
+      - nome: Construir o projeto
+        execute: gcc -o unitário calculadora-imc/test/teste.c
+
+      # Executar o teste
+      - nome: Executar testes unitários
+        executar: ./unitario
